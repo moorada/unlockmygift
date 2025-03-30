@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>UnlockMyGift - Generator</title>
+  <meta name="description" content="Create your custom puzzle with UnlockMyGift. Generate a .unlock file and challenge your friends to unlock their gift!" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- FilePond CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/filepond/dist/filepond.css" />
+  <!-- Generator page CSS -->
+  <link rel="stylesheet" href="generator.css" />
+</head>
+<body>
+  <!-- Flag-based language selector -->
+  <div class="language-selector-flags" id="langFlagsContainer">
+    <img src="flags/en.png" alt="English" data-lang="en" title="English" />
+    <img src="flags/es.png" alt="Español" data-lang="es" title="Español" />
+    <img src="flags/fr.png" alt="Français" data-lang="fr" title="Français" />
+    <img src="flags/it.png" alt="Italiano" data-lang="it" title="Italiano" />
+  </div>
+
+  <div class="container">
+    <h1 id="generatorHeading">UnlockMyGift - Generator</h1>
+    <p class="intro" id="generatorIntro">
+      <!-- Will be replaced by i18n text via JavaScript -->
+    </p>
+
+    <button id="showFormBtn" class="center-btn">Create your Quiz</button>
+    <p class="link-to-unlocker">
+      <span id="generatorAlreadyGift"></span>
+      <a href="unlocker.html" id="generatorGoToUnlocker"></a>
+    </p>
+
+    <div id="quizForm" class="hidden">
+      <h2 id="quizDetailHeading">Quiz Details</h2>
+
+      <label for="quizName" id="quizNameLabel">Quiz Name</label>
+      <input type="text" id="quizName" placeholder="e.g. New Year's Riddle" />
+
+      <label for="quizDescription" id="quizDescriptionLabel">Description</label>
+      <textarea id="quizDescription" rows="3" placeholder="e.g. A fun New Year quiz..."></textarea>
+
+      <label for="finalMessage" id="finalMessageLabel">Final Message</label>
+      <textarea id="finalMessage" rows="2" placeholder="e.g. Great, you got your gift!"></textarea>
+
+      <div id="questions"></div>
+      <button id="addQuestionBtn">+ Add Question</button>
+      <button id="saveQuizBtn">Save your LockedGift</button>
+    </div>
+  </div>
+
+  <!-- FilePond JS -->
+  <script src="https://unpkg.com/filepond/dist/filepond.js"></script>
+  <script src="https://unpkg.com/filepond-plugin-file-encode/dist/filepond-plugin-file-encode.js"></script>
+  <!-- Generator JS -->
+  <script src="generator.js"></script>
+</body>
+</html>
