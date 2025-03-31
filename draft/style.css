@@ -1,0 +1,777 @@
+/* style.css - Stile unificato per UnlockMyGift */
+
+/* ===== STILI COMUNI ===== */
+
+:root {
+    /* Palette dei colori - tema mistero e regalo */
+    --primary: #6a3093;
+    /* Viola misterioso */
+    --primary-dark: #532677;
+    --primary-light: #8450b3;
+    --secondary: #fd5e53;
+    /* Rosso regalo */
+    --secondary-dark: #e04a40;
+    --secondary-light: #ff7b72;
+    --neutral-light: #f8f9fa;
+    --neutral-mid: #e2e3e5;
+    --neutral-dark: #6c757d;
+    --text-dark: #343a40;
+    --text-light: #f8f9fa;
+    --success: #28a745;
+    --error: #dc3545;
+    --warning: #ffc107;
+    --info: #17a2b8;
+    --background: linear-gradient(135deg, #f5f7fa 0%, #e8ecf1 100%);
+    --box-shadow: 0 4px 15px rgba(106, 48, 147, 0.1);
+    --box-shadow-hover: 0 6px 20px rgba(106, 48, 147, 0.15);
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: var(--background);
+    margin: 0;
+    padding: 2rem;
+    color: var(--text-dark);
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    background: white;
+    padding: 2rem;
+    border-radius: 1rem;
+    box-shadow: var(--box-shadow);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 3rem;
+    /* Spazio per i pulsanti in alto */
+}
+
+h1 {
+    text-align: center;
+    font-size: 2.2rem;
+    margin-bottom: 1rem;
+    letter-spacing: 0.5px;
+    color: var(--primary);
+    font-weight: 700;
+}
+
+h2 {
+    margin-top: 1.5rem;
+    font-size: 1.4rem;
+    color: var(--primary);
+    font-weight: 600;
+}
+
+.intro {
+    text-align: center;
+    font-size: 1.1rem;
+    line-height: 1.5;
+    margin-bottom: 1.5rem;
+    color: var(--text-dark);
+}
+
+.btn {
+    margin: 1rem auto 0 auto;
+    padding: 0.75rem 1.5rem;
+    border: none;
+    background: var(--primary);
+    color: white;
+    font-weight: bold;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    display: block;
+    transition: all 0.2s ease-in-out;
+    border: 2px solid transparent;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.btn:hover {
+    background: var(--primary-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.btn:disabled {
+    background: var(--neutral-dark);
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+.secondary-btn {
+    background: var(--neutral-dark);
+    color: white;
+}
+
+.secondary-btn:hover {
+    background: #5a6268;
+}
+
+/* Pulsante back comune */
+.back-button {
+    position: absolute;
+    top: 1.5rem;
+    left: 1.5rem;
+    padding: 0.5rem 1rem;
+    background-color: var(--neutral-light);
+    border: 1px solid var(--neutral-mid);
+    border-radius: 0.5rem;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: all 0.2s ease;
+    color: var(--text-dark);
+    z-index: 100;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.back-button:hover {
+    background-color: var(--neutral-mid);
+    transform: translateY(-2px);
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+}
+
+.hidden {
+    display: none !important;
+}
+/* Modifica per il selettore di lingua a tendina */
+.language-selector-flags {
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+    z-index: 100;
+  }
+  
+  .language-dropdown {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .current-language {
+    width: 32px;
+    height: 32px;
+    cursor: pointer;
+    border: 2px solid var(--neutral-mid);
+    border-radius: 50%;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    display: block;
+  }
+  
+  .current-language:hover {
+    transform: scale(1.1);
+    border-color: var(--primary);
+  }
+  
+  .language-options {
+    display: none;
+    position: absolute;
+    right: 0;
+    top: 40px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+    padding: 8px;
+    z-index: 101;
+  }
+  
+  .language-options.show {
+    display: block;
+    animation: fadeIn 0.2s ease-out;
+  }
+  
+  .language-options img {
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+    border: 1px solid var(--neutral-mid);
+    border-radius: 50%;
+    margin: 6px;
+    transition: all 0.2s ease;
+    display: block;
+  }
+  
+  .language-options img:hover {
+    transform: scale(1.1);
+    border-color: var(--primary);
+  }
+
+/* Messaggi di successo e errore comuni */
+.success-message {
+    background-color: rgba(40, 167, 69, 0.15);
+    color: var(--success);
+    padding: 2rem;
+    border-radius: 1rem;
+    margin: 2rem auto;
+    text-align: center;
+    max-width: 90%;
+    box-shadow: var(--box-shadow);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-left: 4px solid var(--success);
+}
+
+.success-message h3 {
+    margin-bottom: 1.5rem;
+    font-size: 1.3rem;
+    color: var(--success);
+}
+
+.error-message {
+    background-color: rgba(220, 53, 69, 0.15);
+    color: var(--error);
+    padding: 2rem;
+    border-radius: 1rem;
+    margin: 2rem auto;
+    text-align: center;
+    max-width: 90%;
+    box-shadow: var(--box-shadow);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-left: 4px solid var(--error);
+}
+
+/* Elementi di navigazione comuni */
+.navigation-buttons {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+    justify-content: center;
+}
+
+/* Aggiungere/modificare queste regole CSS per ripristinare gli stili degli input */
+
+/* Stile per tutti gli input di testo, textarea, etc. */
+input[type="text"],
+textarea {
+    width: 100%;
+    padding: 0.75rem;
+    margin-top: 0.25rem;
+    margin-bottom: 1rem;
+    border: 1px solid var(--neutral-mid);
+    border-radius: 0.5rem;
+    font-size: 1rem;
+    box-sizing: border-box;
+    transition: all 0.3s ease;
+}
+
+input[type="text"]:focus,
+textarea:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(106, 48, 147, 0.15);
+}
+
+/* Stile per le etichette */
+label {
+    font-weight: 600;
+    display: block;
+    margin-top: 1rem;
+    color: var(--text-dark);
+}
+
+/* Fissare gli stili dei placeholder */
+::placeholder {
+    color: #adb5bd;
+    opacity: 0.8;
+}
+
+/* ===== STILI SPECIFICI PER GENERATOR ===== */
+
+/* Progress indicator */
+.progress-container {
+    max-width: 800px;
+    margin: 0 auto 1rem auto;
+}
+
+.progress-indicator {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 1rem;
+    margin-bottom: 2rem;
+    position: relative;
+}
+
+.progress-indicator::before {
+    content: "";
+    position: absolute;
+    top: 15px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: var(--neutral-mid);
+    z-index: 1;
+}
+
+.progress-step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    z-index: 2;
+}
+
+.step-number {
+    width: 34px;
+    height: 34px;
+    background-color: var(--neutral-mid);
+    color: var(--text-dark);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+    transition: all 0.3s ease;
+}
+
+.step-text {
+    font-size: 0.85rem;
+    color: var(--text-dark);
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.progress-step.active .step-number {
+    background-color: var(--primary);
+    color: white;
+    transform: scale(1.1);
+    box-shadow: 0 0 10px rgba(106, 48, 147, 0.4);
+}
+
+.progress-step.active .step-text {
+    color: var(--primary);
+    font-weight: bold;
+}
+/* Stile modificato per il pulsante Aggiungi indovinello */
+.add-question-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(106, 48, 147, 0.7); /* Viola semitrasparente */
+    color: white;
+    border-radius: 50%; /* Perfettamente circolare */
+    width: 50px;
+    height: 50px;
+    font-size: 1.8rem;
+    padding: 0;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+    transition: all 0.3s ease;
+    text-align: center;
+  }
+  
+  .add-question-btn:hover {
+    background: rgba(106, 48, 147, 0.9);
+    transform: scale(1.1);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+  }
+  
+  /* Nascondi il testo "Aggiungi indovinello" */
+  .add-text {
+    display: none;
+  }
+  
+  /* Rimuovi il margine dal segno + */
+  .plus-icon {
+    margin: 0;
+    font-weight: bold;
+    line-height: 1;
+  }
+  
+  /* Centro il contenitore */
+  .add-question-container {
+    display: flex;
+    justify-content: center;
+    margin: 2rem 0;
+    width: 100%;
+  }
+
+/* Riddle question styles */
+.question {
+    border-top: none;
+    padding: 1.5rem;
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
+    position: relative;
+    background-color: var(--neutral-light);
+    border-radius: 0.8rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.question-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+    font-weight: bold;
+    border-bottom: 1px solid var(--neutral-mid);
+    padding-bottom: 0.8rem;
+    color: var(--primary);
+}
+
+.remove-question-btn {
+    background: var(--error);
+    color: white;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    font-size: 1.2rem;
+    cursor: pointer;
+    margin: 0;
+    transition: all 0.2s ease;
+}
+
+.remove-question-btn:hover {
+    background: #b02a37;
+    transform: rotate(90deg);
+}
+
+.info-text {
+    text-align: center;
+    color: var(--text-dark);
+    line-height: 1.5;
+    margin: 1rem auto 2rem auto;
+    max-width: 700px;
+    background-color: rgba(23, 162, 184, 0.1);
+    padding: 1.2rem;
+    border-radius: 0.8rem;
+    border-left: 4px solid var(--info);
+}
+
+.generate-info {
+    text-align: center;
+    color: var(--text-dark);
+    line-height: 1.5;
+    margin: 1rem 0 2rem 0;
+    background-color: rgba(106, 48, 147, 0.08);
+    padding: 1.2rem;
+    border-radius: 0.8rem;
+}
+
+.generate-btn {
+    margin: 2rem auto;
+    padding: 1rem 2rem;
+    font-size: 1.1rem;
+    display: block;
+    background: var(--secondary);
+}
+
+.generate-btn:hover {
+    background: var(--secondary-dark);
+}
+
+.next-btn {
+    margin-left: auto;
+    background: var(--primary);
+}
+
+.center-btn {
+    display: block;
+    margin: 0 auto 1.5rem auto;
+    text-align: center;
+    background: var(--primary);
+    color: white;
+    border: none;
+    padding: 0.85rem 1.5rem;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.2s ease-in-out;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+}
+
+.center-btn:hover {
+    background: var(--primary-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
+}
+
+/* Stile per gli input nella sezione dettagli quiz */
+#quizInfoContainer {
+    width: 100%;
+    max-width: 100%;
+    padding: 0 !important;
+  }
+  
+  #quizInfoContainer input[type="text"],
+  #quizInfoContainer textarea {
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+    padding: 0.85rem !important;
+    font-size: 1.05rem !important;
+    margin-top: 0.5rem !important;
+  }
+  
+  /* Aumenta anche la larghezza del contenitore principale se necessario */
+  .container {
+    max-width: 900px !important;
+    padding: 2rem 3rem !important;
+  }
+  
+  /* Controlla se c'è un contenitore interno che limita la larghezza */
+  #quizForm, 
+  #quizForm > div {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+/* ===== STILI SPECIFICI PER UNLOCKER ===== */
+
+#uploadArea {
+    width: 100%;
+    margin-bottom: 1.5rem;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+/* Correggere il colore dei bottoni dell'Unlocker */
+#continueAfterUploadBtn,
+#startQuizBtn {
+  background: var(--primary);
+}
+
+#continueAfterUploadBtn:hover,
+#startQuizBtn:hover {
+  background: var(--primary-dark);
+}
+
+/* Se ci sono altri bottoni con il colore arancione/corallo, aggiungi qui i loro selettori */
+.btn.secondary-btn {
+  background: var(--neutral-dark);
+}
+
+.btn.secondary-btn:hover {
+  background: #5a6268;
+}
+
+/* Stile FilePond */
+.filepond--root {
+    margin-bottom: 1.5rem;
+    width: 100%;
+}
+
+.filepond--panel-root {
+    background-color: var(--neutral-light);
+    border: 2px dashed var(--primary-light);
+    border-radius: 0.8rem;
+}
+
+.filepond--drop-label {
+    color: var(--primary);
+    font-weight: 500;
+}
+
+.filepond--drop-label label {
+    font-weight: 500;
+}
+
+.filepond--file {
+    color: var(--text-dark);
+}
+
+.filepond--hopper {
+    border-radius: 0.8rem;
+}
+
+/* Question container */
+.question-container {
+    text-align: center;
+    margin: 1.5rem 0;
+    width: 100%;
+    padding: 1.5rem;
+    background-color: var(--neutral-light);
+    border-radius: 0.8rem;
+    box-shadow: var(--box-shadow);
+}
+
+.question-container h2 {
+    margin-bottom: 1rem;
+    color: var(--primary);
+    font-size: 1.3rem;
+}
+
+.question-container p {
+    margin: 1rem 0;
+    font-size: 1.15rem;
+    line-height: 1.5;
+}
+
+/* Image gallery */
+.image-gallery {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin: 1.5rem 0;
+}
+
+.image-gallery a {
+    display: inline-block;
+    max-width: 300px;
+    width: 300px;
+    transition: transform 0.3s ease;
+}
+
+.image-gallery a:hover {
+    transform: scale(1.02);
+}
+
+.image-gallery img {
+    width: 100%;
+    border-radius: 0.5rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Answer input */
+.answer-input {
+    margin: 1rem auto;
+    padding: 0.85rem 1rem;
+    border: 2px solid var(--neutral-mid);
+    border-radius: 0.5rem;
+    font-size: 1.05rem;
+    width: 85%;
+    display: block;
+    box-sizing: border-box;
+    transition: all 0.3s ease;
+}
+
+.answer-input:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(106, 48, 147, 0.15);
+}
+
+/* Result message */
+.result {
+    margin-top: 1rem;
+    font-weight: bold;
+    min-height: 1.5rem;
+    text-align: center;
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    color: var(--error);
+}
+
+/* Final message */
+.final {
+    text-align: center;
+    margin: 2rem auto;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--primary);
+    padding: 2.5rem;
+    background-color: rgba(106, 48, 147, 0.08);
+    border-radius: 1rem;
+    box-shadow: var(--box-shadow);
+    max-width: 90%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    line-height: 1.6;
+    border-left: 4px solid var(--primary);
+}
+
+/* Quiz info section */
+#quizInfo {
+    text-align: center;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 1rem 0;
+    padding: 1rem;
+    background-color: rgba(106, 48, 147, 0.03);
+    border-radius: 0.8rem;
+}
+
+#quizInfo h2 {
+    margin-bottom: 1rem;
+    color: var(--primary);
+    font-size: 1.5rem;
+}
+
+#quizInfo p {
+    margin-bottom: 1.5rem;
+    color: var(--text-dark);
+    line-height: 1.6;
+    max-width: 90%;
+}
+
+/* Correggere il colore del pulsante "Sblocca il regalo" */
+#startQuizBtn {
+    background: var(--primary);
+  }
+  
+  #startQuizBtn:hover {
+    background: var(--primary-dark);
+  }
+
+/* Media queries for responsive design */
+@media (max-width: 768px) {
+    body {
+        padding: 1rem;
+    }
+
+    .container {
+        padding: 1.5rem;
+        margin-top: 2.5rem;
+    }
+
+    h1 {
+        font-size: 1.8rem;
+    }
+
+    .back-button,
+    .language-selector-flags {
+        top: 1rem;
+    }
+
+    .back-button {
+        left: 1rem;
+        padding: 0.4rem 0.8rem;
+        font-size: 0.8rem;
+    }
+
+    .add-question-btn {
+        padding: 0.6rem 1.2rem;
+    }
+
+    .question,
+    .question-container {
+        padding: 1rem;
+    }
+}
+
+/* Animazioni */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.container {
+    animation: fadeIn 0.3s ease-out;
+}
+
+.success-message,
+.error-message,
+.final {
+    animation: fadeIn 0.4s ease-out;
+}
