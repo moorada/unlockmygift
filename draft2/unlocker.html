@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>UnlockMyGift - Unlocker</title>
+  <meta name="description" content="Upload a .unlock file and solve the puzzle to get your gift! UnlockMyGift Unlocker." />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- FilePond CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/filepond@4.32.7/dist/filepond.min.css" />
+  <!-- Unlocker page CSS -->
+  <link rel="stylesheet" href="style.css" />
+
+  <!-- LightGallery CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@2.7.1/css/lightgallery.min.css" />
+  
+  <!-- Additional responsive styles -->
+  <style>
+    /* Stili aggiuntivi per immagini responsive */
+    @media (max-width: 768px) {
+      .image-gallery {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+      }
+      
+      .image-gallery a {
+        max-width: 100%;
+        width: 100%;
+        margin-bottom: 0.5rem;
+      }
+      
+      .image-gallery img {
+        max-width: 100%;
+        width: 100%;
+        height: auto;
+      }
+      
+      /* Fix per contenitore domanda */
+      .question-container {
+        width: 100%;
+        box-sizing: border-box;
+        padding: 1rem;
+      }
+      
+      /* Margini migliori per dispositivi mobili */
+      .container {
+        margin-top: 4rem;
+        padding: 1rem;
+      }
+    }
+    
+    /* Classe per immagini responsive */
+    .responsive-image {
+      max-width: 100%;
+      height: auto;
+    }
+  </style>
+</head>
+<body>
+  <!-- Flag-based language selector -->
+  <div class="language-selector-flags" id="langFlagsContainerUnlocker">
+    <img src="flags/en.png" alt="English" data-lang="en" title="English" />
+    <img src="flags/es.png" alt="Español" data-lang="es" title="Español" />
+    <img src="flags/fr.png" alt="Français" data-lang="fr" title="Français" />
+    <img src="flags/it.png" alt="Italiano" data-lang="it" title="Italiano" />
+  </div>
+
+  <!-- Back button -->
+  <button id="backButton" class="back-button hidden">Back</button>
+
+  <div class="container">
+    <h1 id="unlockerHeading">UnlockMyGift</h1>
+    <p class="intro" id="unlockerIntro">
+      <!-- Will be replaced via JavaScript i18n -->
+    </p>
+    
+    <div id="uploadArea">
+      <input type="file" id="fileInput" />
+      <button id="continueAfterUploadBtn" class="btn hidden">Continue to Riddle Info</button>
+    </div>
+
+    <div id="quizInfo" class="hidden">
+      <h2 id="quizTitle"></h2>
+      <p id="quizDesc"></p>
+      <button class="btn" id="startQuizBtn">Start the Quiz</button>
+    </div>
+
+    <div id="quizContainer"></div>
+  </div>
+
+  <!-- FilePond JS -->
+  <script src="https://cdn.jsdelivr.net/npm/filepond@4.32.7/dist/filepond.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/filepond-plugin-file-encode@2.1.14/dist/filepond-plugin-file-encode.min.js"></script>
+
+  <!-- LightGallery JS -->
+  <script src="https://cdn.jsdelivr.net/npm/lightgallery@2.7.1/lightgallery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lightgallery@2.7.1/plugins/zoom/lg-zoom.min.js"></script>
+
+  <!-- unlocker JS -->
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>UnlockMyGift - Generator</title>
+  <meta name="description"
+    content="Create your custom puzzle with UnlockMyGift. Generate a .unlock file and challenge your friends to unlock their gift!" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- FilePond CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/filepond@4.32.7/dist/filepond.min.css" />
+  <!-- Generator page CSS -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <!-- Flag-based language selector -->
+  <div class="language-selector-flags" id="langFlagsContainer">
+    <img src="flags/en.png" alt="English" data-lang="en" title="English" />
+    <img src="flags/es.png" alt="Español" data-lang="es" title="Español" />
+    <img src="flags/fr.png" alt="Français" data-lang="fr" title="Français" />
+    <img src="flags/it.png" alt="Italiano" data-lang="it" title="Italiano" />
+  </div>
+
+  <!-- Back button -->
+  <button id="backButtonGen" class="back-button hidden">Back</button>
+
+  <!-- Progress indicator -->
+  <!-- Modifica alla barra di progresso per aggiungere un nuovo step -->
+  <div class="progress-container">
+    <div id="progressIndicator" class="progress-indicator">
+      <div class="progress-step active">
+        <div class="step-number">1</div>
+        <div class="step-text" id="step1">Info</div>
+      </div>
+      <div class="progress-step">
+        <div class="step-number">2</div>
+        <div class="step-text" id="step2">Riddles</div>
+      </div>
+      <div class="progress-step">
+        <div class="step-number">3</div>
+        <div class="step-text" id="step3">Message</div>
+      </div>
+      <div class="progress-step">
+        <div class="step-number">4</div>
+        <div class="step-text" id="step4">Generate</div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="container">
+    <div id="initialView">
+      <h1 id="generatorHeading">UnlockMyGift - Generator</h1>
+      <p class="intro" id="generatorIntro">
+        <!-- Will be replaced by i18n text via JavaScript -->
+      </p>
+
+      <button id="showFormBtn" class="center-btn">Create your Quiz</button>
+      <p class="link-to-unlocker">
+        <span id="generatorAlreadyGift"></span>
+        <a href="unlocker.html" id="generatorGoToUnlocker"></a>
+      </p>
+    </div>
+
+    <div id="quizForm" class="hidden">
+      <!-- Phase 1: Basic Quiz Info -->
+      <div id="quizInfoContainer">
+        <h2 id="quizDetailHeading">Quiz Details</h2>
+
+        <label for="quizName" id="quizNameLabel">Quiz Name (required)</label>
+        <input type="text" id="quizName" placeholder="e.g. Birthday Mystery, Anniversary Surprise, Christmas Riddles" />
+
+        <label for="quizDescription" id="quizDescriptionLabel">Description</label>
+        <textarea id="quizDescription" rows="3"
+          placeholder="e.g. Solve these riddles to find your special birthday gift! Each answer brings you closer to the surprise."></textarea>
+
+        <label for="finalMessage" id="finalMessageLabel">Final Message (required)</label>
+        <textarea id="finalMessage" rows="2"
+          placeholder="e.g. Your Amazon voucher code is XXXX-YYYY-ZZZZ or Your gift is hidden in the bedroom closet, bottom drawer!"></textarea>
+
+        <button class="btn next-btn" id="continueToQuestionsBtn">Next Step</button>
+      </div>
+
+      <!-- Phase 2: Adding Questions -->
+      <div id="questionAddContainer" class="hidden">
+        <h2 id="addQuestionsHeading">Add Riddles</h2>
+
+        <p class="info-text" id="addQuestionsInfoText">
+          This is where you create riddles for your gift. Each riddle should be challenging but solvable.
+          Add as many as you like to make your gift more exciting!
+        </p>
+
+        <div id="questions"></div>
+
+        <div class="add-question-container">
+          <button id="addQuestionBtn" class="add-question-btn">
+            <span class="plus-icon">+</span>
+            <span class="add-text">Add Riddle</span>
+          </button>
+        </div>
+
+        <div class="btn-group">
+          <button class="btn next-btn" id="continueToGenerateBtn">Next Step</button>
+        </div>
+      </div>
+      <!-- Container per la fase del messaggio finale -->
+      <div id="finalMessageContainer" class="hidden">
+        <h2 id="finalMessageHeading">Final Message</h2>
+
+        <p class="info-text" id="finalMessageInfoText">
+          This is where you write the final message that will be revealed when all riddles are solved.
+          This could be a code, a location where to find the gift, or any other surprise!
+        </p>
+
+        <label for="finalMessage" id="finalMessageLabel">Final Message (required)</label>
+        <textarea id="finalMessage" rows="4"
+          placeholder="e.g. Your Amazon voucher code is XXXX-YYYY-ZZZZ or Your gift is hidden in the bedroom closet, bottom drawer!"></textarea>
+
+        <div class="btn-group">
+          <button class="btn next-btn" id="continueToGenerateBtn">Next Step</button>
+        </div>
+      </div>
+
+      <!-- Phase 3: Generate and Save -->
+      <div id="generateContainer" class="hidden">
+        <h2 id="generateHeading">Generate Your LockedGift</h2>
+        <p class="generate-info">
+          Your gift is ready to be locked! Click the button below to create your .unlock file.
+          You can share this file with your friend who can then use the Unlocker to solve your puzzles.
+        </p>
+
+
+
+        <button id="saveQuizBtn" class="btn generate-btn">Save your LockedGift</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- FilePond JS (via jsDelivr, HTTPS guaranteed) -->
+  <script src="https://cdn.jsdelivr.net/npm/filepond@4.32.7/dist/filepond.min.js"></script>
+  <script
+    src="https://cdn.jsdelivr.net/npm/filepond-plugin-file-encode@2.1.14/dist/filepond-plugin-file-encode.min.js"></script>
+
+  <!-- Your Generator Logic -->
+  <script src="script.js"></script>
+</body>
+
+</html>
